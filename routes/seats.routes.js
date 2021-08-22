@@ -21,8 +21,22 @@ router.route('/seats/:id').get((req, res) => {
 
 router.route('/seats').post((req, res) => {
   const id = db.seats.length;
-  req.body.id = id;
+  const seat= req.body.seat;
+  const client= req.body.client;
+  const email= req.body.email;
+  const concert= req.body.concert;
+  const day= req.body.day;
+
+  req.body.id = id + 1;
   res.json(req.body);
+  db.seats.push({
+    id: id,
+    seat: seat,
+    client: client,
+    email: email,
+    concert: concert,
+    day: day
+  });
 });
 
 router.route('/seats/:id').put((req, res) => {
