@@ -720,6 +720,16 @@
   "resolved" "https://registry.npmjs.org/negotiator/-/negotiator-0.6.2.tgz"
   "version" "0.6.2"
 
+"node-bin-setup@^1.0.0":
+  "version" "1.0.6"
+
+"node@^16.6.1":
+  "integrity" "sha512-qlIQ5vkAAMP+T1bYivwngIqZlUzerPSeaeAQVUvyQ2XZ8WN86ZUdzcpkW/iuEnP9paNcpAsA4p9yCsfrdjG7YQ=="
+  "resolved" "https://registry.npmjs.org/node/-/node-16.6.1.tgz"
+  "version" "16.6.1"
+  dependencies:
+    "node-bin-setup" "^1.0.0"
+
 "nodemon@^2.0.12":
   "integrity" "sha512-egCTmNZdObdBxUBw6ZNwvZ/xzk24CKRs5K6d+5zbmrMr7rOpPmfPeF6OxM3DDpaRx331CQRFEktn+wrFFfBSOA=="
   "resolved" "https://registry.npmjs.org/nodemon/-/nodemon-2.0.12.tgz"
