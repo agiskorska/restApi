@@ -37,6 +37,8 @@ router.route('/seats').post((req, res) => {
     concert: concert,
     day: day
   });
+  req.io.emit('seatsUpdated', db.seats);
+
 });
 
 router.route('/seats/:id').put((req, res) => {

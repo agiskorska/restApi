@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Alert, Progress } from 'reactstrap';
-
 import './OrderTicketForm.scss';
 import SeatChooser from './../SeatChooser/SeatChooserContainer';
 
@@ -39,13 +38,13 @@ class OrderTicketForm extends React.Component {
 
   submitForm = async (e) => {
     const { order } = this.state;
-    const { addSeat, loadSeat } = this.props;
+    const { addSeat } = this.props;
 
     e.preventDefault();
 
+
     if(order.client && order.email && order.day && order.seat) {
       await addSeat(order);
-      loadSeat();
       this.setState({ 
         order: {
           client: '',
