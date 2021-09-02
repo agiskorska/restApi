@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const path = require('path');
 const socket = require('socket.io');
+const mongoose = require('mongoose');
 
 
 const testimonialsRoutes = require('./routes/testimonials.routes');
@@ -14,6 +15,13 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
+mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+
+db.once('open', () => {
+  console.log('Connected to the database');
+});
+
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.use(express.urlencoded({ extended: false }));
@@ -24,6 +32,11 @@ app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
   req.io = io;
+  next();
+});
+
+app.use((req, res, next) => {
+  req.db = db;
   next();
 });
 
