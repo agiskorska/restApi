@@ -1,0 +1,20 @@
+{
+  "name": "new-wave-fest-app",
+  "version": "1.0.1",
+  "main": "server.js",
+  "license": "MIT",
+  "engines": {
+    "node": "15.3.0"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "build": "cd client && yarn install && yarn build"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "4.17.1",
+    "mongoose": "^5.7.1",
+    "nodemon": "^2.0.12",
+    "socket.io": "^4.0.1"
+  }
+}
