@@ -14,8 +14,14 @@ const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200,
 };
+const NODE_ENV = process.env.NODE_ENV;
+let dbUri = '';
 
-mongoose.connect('mongodb+srv://Aga:temporary123@cluster0.x1qny.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+if(NODE_ENV === 'production') dbUri = 'mongodb+srv://Aga:temporary123@cluster0.x1qny.mongodb.net/NewWaveDB?retryWrites=true&w=majority';
+else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/newWavetest';
+else dbUri = 'mongodb+srv://Aga:temporary123@cluster0.x1qny.mongodb.net/NewWaveDB?retryWrites=true&w=majority';
+
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -61,3 +67,5 @@ const io = socket(server);
 io.on('connection', (socket) => {
   console.log('New client! Its id – ' + socket.id);
 });
+
+module.exports = server
