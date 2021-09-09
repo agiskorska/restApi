@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
-
+const helmet = require('helmet');
 
 const testimonialsRoutes = require('./routes/testimonials.routes');
 const concertsRoutes = require('./routes/concerts.routes');
@@ -29,6 +29,8 @@ db.once('open', () => {
 });
 
 app.use(express.static(path.join(__dirname, '/client/build')));
+
+app.use(helmet());
 
 app.use(express.urlencoded({ extended: false }));
 

@@ -1,7 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../server');
-const Concert = require('../../models/concert.model')
+const Concert = require('../../models/concert.model');
+
 
 chai.use(chaiHttp);
 
